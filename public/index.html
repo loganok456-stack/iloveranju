@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To the most amazing person in my life</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            background: #fff;
+            /* Enable hardware acceleration for smoother animations */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ============ ULTRA SMOOTH FLOATING HEARTS ============ */
+        @keyframes floatHeartSmooth {
+            0% {
+                transform: translate3d(0, 100vh, 0) scale(0) rotate(0deg);
+                opacity: 0;
+            }
+            5% {
+                opacity: 0.8;
+            }
+            25% {
+                transform: translate3d(20px, 75vh, 0) scale(0.8) rotate(90deg);
+            }
+            50% {
+                transform: translate3d(-15px, 50vh, 0) scale(1) rotate(180deg);
+                opacity: 0.9;
+            }
+            75% {
+                transform: translate3d(25px, 25vh, 0) scale(0.9) rotate(270deg);
+            }
+            95% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate3d(-10px, -10vh, 0) scale(0.3) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .heart-float {
+            position: absolute;
+            font-size: 28px;
+            animation: floatHeartSmooth 12s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+            opacity: 0.75;
+            filter: drop-shadow(0 0 15px rgba(255, 78, 136, 0.6));
+            will-change: transform, opacity;
+            /* GPU acceleration */
+            transform: translate3d(0, 0, 0);
+        }
+
+        /* ============ HERO SECTION ============ */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(20, 30, 40, 0.7), rgba(40, 50, 60, 0.7));
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            animation: zoomInSmooth 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
+        }
+
+        @keyframes zoomInSmooth {
+            from {
+                transform: scale(1.15);
+                filter: blur(5px);
+            }
+            to {
+                transform: scale(1);
+                filter: blur(0);
+            }
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            position: relative;
+            padding: 0 20px;
+            animation: fadeInUpSmooth 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s backwards;
+            will-change: transform, opacity;
+        }
+
+        @keyframes fadeInUpSmooth {
+            from {
+                opacity: 0;
+                transform: translate3d(0, 40px, 0);
+            }
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        .hero-heart {
+            font-size: 90px;
+            margin-bottom: 20px;
+            animation: pulseSmooth 2.5s ease-in-out infinite;
+            filter: drop-shadow(0 0 25px rgba(255, 78, 136, 0.9));
+            will-change: transform;
+        }
+
+        @keyframes pulseSmooth {
+            0%, 100% {
+                transform: scale3d(1, 1, 1);
+            }
+            50% {
+                transform: scale3d(1.12, 1.12, 1);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 25px rgba(0, 0, 0, 0.6);
+            animation: fadeInUpSmooth 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s backwards;
+        }
+
+        .hero-subtitle {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #FFB6D9;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.4);
+            animation: fadeInUpSmooth 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.7s backwards;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            font-weight: 300;
+            margin-bottom: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUpSmooth 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.9s backwards;
+        }
+
+        .hero-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #FF4E88, #FF1654);
+            color: white;
+            padding: 22px 55px;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 15px 35px rgba(255, 30, 84, 0.5);
+            cursor: pointer;
+            border: none;
+            animation: fadeInUpSmooth 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.1s backwards;
+            position: relative;
+            overflow: hidden;
+            will-change: transform;
+        }
+
+        .hero-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .hero-button:hover::before {
+            width: 350px;
+            height: 350px;
+        }
+
+        .hero-button:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 25px 55px rgba(255, 30, 84, 0.7);
+        }
+
+        .hero-button:active {
+            transform: translateY(-5px) scale(1.02);
+        }
+
+        .hero-heart-big {
+            position: absolute;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 280px;
+            height: 280px;
+            background: linear-gradient(135deg, #C41E3A, #8B0000);
+            clip-path: polygon(50% 15%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            animation: slideUpHeartSmooth 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s backwards;
+            opacity: 0.85;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            filter: drop-shadow(0 15px 40px rgba(196, 30, 58, 0.7));
+            will-change: transform;
+        }
+
+        .hero-heart-big:hover {
+            transform: translateX(-50%) scale(1.15) rotate(5deg);
+            filter: drop-shadow(0 20px 50px rgba(196, 30, 58, 0.9));
+        }
+
+        .hero-heart-big:active {
+            transform: translateX(-50%) scale(1.05) rotate(3deg);
+        }
+
+        @keyframes slideUpHeartSmooth {
+            0% {
+                bottom: -150px;
+                opacity: 0;
+                transform: translateX(-50%) scale(0.5);
+            }
+            60% {
+                transform: translateX(-50%) scale(1.05);
+            }
+            100% {
+                bottom: 100px;
+                opacity: 0.85;
+                transform: translateX(-50%) scale(1);
+            }
+        }
+
+        .click-heart-text {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1.2rem;
+            animation: fadeInTextSmooth 1.2s ease-out 1.5s backwards, bounceSmooth 2.5s ease-in-out 2s infinite;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            will-change: transform;
+        }
+
+        .click-heart-text:hover {
+            transform: translateX(-50%) scale(1.1);
+        }
+
+        @keyframes fadeInTextSmooth {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        @keyframes bounceSmooth {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(-12px);
+            }
+        }
+
+        .heart-counter {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.25);
+            padding: 3px 14px;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-left: 8px;
+            animation: counterPopSmooth 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        @keyframes counterPopSmooth {
+            0% {
+                transform: scale(0.3);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.4);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* ============ TIMELINE SECTION WITH ULTRA SMOOTH INTERACTIONS ============ */
+        .timeline-section {
+            padding: 120px 20px;
+            background: linear-gradient(180deg, #FFF5F8 0%, #FFE8F0 50%, #FFF5F8 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: #E91E63;
+            text-align: center;
+            margin-bottom: 15px;
+            animation: fadeInUpSmooth 1s ease-out;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.4rem;
+            color: #666;
+            margin-bottom: 80px;
+            animation: fadeInUpSmooth 1s ease-out 0.2s backwards;
+        }
+
+        .timeline-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline-line {
+            position: absolute;
+            right: 50px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, #FF4E88, #FFB6D9, #FF4E88);
+            box-shadow: 0 0 25px rgba(255, 78, 136, 0.6);
+            animation: lineGrowSmooth 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        @keyframes lineGrowSmooth {
+            from {
+                height: 0;
+                opacity: 0;
+            }
+            to {
+                height: 100%;
+                opacity: 1;
+            }
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 120px;
+            position: relative;
+            opacity: 0;
+            animation: slideInTimelineSmooth 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            will-change: transform;
+        }
+
+        .timeline-item:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .timeline-item:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .timeline-item:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .timeline-item:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+
+        @keyframes slideInTimelineSmooth {
+            from {
+                opacity: 0;
+                transform: translate3d(-100px, 0, 0);
+            }
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        /* ULTRA SMOOTH INTERACTIVE HOVER */
+        .timeline-item:hover {
+            transform: translate3d(-25px, 0, 0) scale(1.02);
+        }
+
+        .timeline-item:hover .timeline-content {
+            box-shadow: 0 25px 70px rgba(255, 78, 136, 0.4);
+            transform: translate3d(0, -15px, 0);
+        }
+
+        .timeline-item:hover .timeline-dot {
+            transform: translate3d(0, -50%, 0) scale(1.6);
+            box-shadow: 0 0 0 10px rgba(255, 78, 136, 0.35), 0 0 40px rgba(255, 78, 136, 0.7);
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: white;
+            padding: 45px;
+            border-radius: 30px;
+            box-shadow: 0 15px 45px rgba(255, 78, 136, 0.18);
+            margin-right: 100px;
+            position: relative;
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 2px solid rgba(255, 78, 136, 0.1);
+            will-change: transform, box-shadow;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 78, 136, 0.03), rgba(255, 182, 217, 0.03));
+            border-radius: 30px;
+            z-index: -1;
+        }
+
+        .timeline-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.3rem;
+            color: #E91E63;
+            margin-bottom: 12px;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .timeline-item:hover .timeline-content h3 {
+            color: #FF1654;
+            transform: translate3d(8px, 0, 0);
+        }
+
+        .timeline-content .date {
+            font-size: 1.2rem;
+            color: #E91E63;
+            font-weight: 600;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .timeline-content p {
+            font-size: 1.15rem;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            right: -53px;
+            top: 50%;
+            transform: translate3d(0, -50%, 0);
+            width: 24px;
+            height: 24px;
+            background: #FF4E88;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 0 0 5px rgba(255, 78, 136, 0.3);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 10;
+            will-change: transform, box-shadow;
+        }
+
+        /* ============ SMOOTH CAROUSEL ============ */
+        .carousel-section {
+            padding: 120px 20px;
+            background: linear-gradient(180deg, #FFE8F0 0%, #FFF5F8 100%);
+        }
+
+        .carousel-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 40px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            gap: 20px;
+            padding: 20px 0;
+            will-change: transform;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeInSlide 1s ease-out;
+        }
+
+        @keyframes fadeInSlide {
+            from {
+                opacity: 0;
+                transform: scale(0.92);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .carousel-slide img {
+            max-width: 90%;
+            max-height: 550px;
+            border-radius: 30px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .carousel-slide img:hover {
+            transform: scale(1.04);
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin-top: 40px;
+        }
+
+        .carousel-dot {
+            width: 60px;
+            height: 14px;
+            background: rgba(255, 78, 136, 0.25);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .carousel-dot:hover {
+            background: rgba(255, 78, 136, 0.5);
+            transform: scale(1.15);
+        }
+
+        .carousel-dot.active {
+            background: #FF4E88;
+            transform: scale(1.2);
+            box-shadow: 0 8px 20px rgba(255, 78, 136, 0.5);
+        }
+
+        /* ============ LETTER SECTION ============ */
+        .letter-section {
+            padding: 120px 20px;
+            background: linear-gradient(180deg, #FFF5F8 0%, #FFE8F0 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .letter-icon {
+            font-size: 90px;
+            margin-bottom: 25px;
+            animation: floatIcon 3.5s ease-in-out infinite;
+            filter: drop-shadow(0 12px 25px rgba(255, 78, 136, 0.4));
+        }
+
+        @keyframes floatIcon {
+            0%, 100% {
+                transform: translate3d(0, 0, 0);
+            }
+            50% {
+                transform: translate3d(0, -18px, 0);
+            }
+        }
+
+        .letter-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: #E91E63;
+            margin-bottom: 60px;
+        }
+
+        .letter-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #FF4E88, #FF1654);
+            color: white;
+            padding: 22px 55px;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 15px 35px rgba(255, 30, 84, 0.5);
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .letter-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .letter-button:hover::before {
+            width: 350px;
+            height: 350px;
+        }
+
+        .letter-button:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 25px 55px rgba(255, 30, 84, 0.7);
+        }
+
+        /* ============ MODAL ============ */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            justify-content: center;
+            align-items: center;
+            animation: fadeInModal 0.4s ease;
+            backdrop-filter: blur(12px);
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        @keyframes fadeInModal {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #FFE8F0, #FFF5F8);
+            padding: 70px;
+            border-radius: 35px;
+            max-width: 750px;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4);
+            animation: slideUpModal 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes slideUpModal {
+            from {
+                transform: translate3d(0, 150px, 0) scale(0.85);
+                opacity: 0;
+            }
+            to {
+                transform: translate3d(0, 0, 0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            font-size: 45px;
+            color: #E91E63;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .modal-close:hover {
+            transform: rotate(90deg) scale(1.2);
+            color: #FF1654;
+        }
+
+        .modal-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: #E91E63;
+            margin-bottom: 35px;
+            text-align: center;
+        }
+
+        .modal-content p {
+            font-size: 1.25rem;
+            line-height: 1.9;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        /* ============ LOVE SECTION ============ */
+        .love-section {
+            padding: 120px 20px;
+            background: linear-gradient(180deg, #FFE8F0 0%, #FFF5F8 100%);
+            position: relative;
+        }
+
+        .love-icon {
+            text-align: center;
+            font-size: 90px;
+            margin-bottom: 25px;
+            animation: pulseSmooth 2.5s ease-in-out infinite;
+            filter: drop-shadow(0 12px 25px rgba(255, 78, 136, 0.4));
+        }
+
+        .love-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: #E91E63;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .love-subtitle {
+            text-align: center;
+            font-size: 1.4rem;
+            color: #666;
+            margin-bottom: 70px;
+        }
+
+        .love-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+        }
+
+        .love-card {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 55px 35px;
+            border-radius: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(255, 78, 136, 0.15);
+            will-change: transform;
+        }
+        .love-card {
+    perspective: 1000px;
+}
+
+
+        .love-card:hover {
+            transform: translate3d(0, -18px, 0) scale(1.04);
+            box-shadow: 0 30px 70px rgba(255, 78, 136, 0.4);
+        }
+        @media (max-width: 768px) {
+  .love-card-img {
+    height: 140px;
+  }
+}
+.love-card {
+  height: auto;                /* allow card to grow */
+  min-height: 320px;           /* stable size */
+  transform-style: preserve-3d;
+}
+
+
+
+        .love-card.flipped {
+            background: linear-gradient(135deg, #FF4E88, #FFB6D9);
+            color: white;
+            transform: translate3d(0, -18px, 0);
+        }
+
+        .love-card-front, .love-card-back {
+            width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+            transition: opacity 0.4s ease;
+        }
+
+        .love-card.flipped .love-card-front {
+            opacity: 0;
+            position: absolute;
+            transform: rotateY(180deg);
+        }
+
+        .love-card.flipped .love-card-back {
+            opacity: 1;
+            transform: rotateY(0deg);
+        }
+
+        .love-card-back {
+            transform: rotateY(180deg);
+            display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+            opacity: 0;
+        }
+
+        .love-card-icon {
+            font-size: 70px;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.1));
+        }
+
+        .love-card h3 {
+            font-size: 1.7rem;
+            font-weight: 600;
+            margin-bottom: 18px;
+            color: #333;
+        }
+
+        .love-card.flipped h3 {
+            color: white;
+        }
+
+        .love-card p {
+            font-size: 1.05rem;
+            color: #666;
+        }
+
+        .love-card.flipped p {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.2rem;
+            line-height: 1.7;
+        }
+
+        .tap-text {
+            font-size: 0.95rem;
+            color: #999;
+            margin-top: 12px;
+        }
+
+        .love-card.flipped .tap-text {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        /* ============ FINAL SECTION ============ */
+        .final-section {
+            padding: 180px 20px;
+            background: linear-gradient(135deg, #E91E63, #FF1654);
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-heart {
+            font-size: 120px;
+            margin-bottom: 35px;
+            animation: pulseSmooth 2.5s ease-in-out infinite;
+            filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.3));
+        }
+
+        .final-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            margin-bottom: 25px;
+            text-shadow: 3px 3px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .final-subtitle {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 45px;
+            text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .final-text {
+            font-size: 1.4rem;
+            max-width: 950px;
+            margin: 0 auto 60px;
+            line-height: 1.9;
+        }
+
+        .final-hearts {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            font-size: 60px;
+            margin-bottom: 60px;
+        }
+
+        .final-hearts span {
+            animation: pulseSmooth 2.5s ease-in-out infinite;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+        }
+
+        .final-hearts span:nth-child(1) { animation-delay: 0s; }
+        .final-hearts span:nth-child(2) { animation-delay: 0.2s; }
+        .final-hearts span:nth-child(3) { animation-delay: 0.4s; }
+        .final-hearts span:nth-child(4) { animation-delay: 0.6s; }
+        .final-hearts span:nth-child(5) { animation-delay: 0.8s; }
+        .final-hearts span:nth-child(6) { animation-delay: 1s; }
+        .final-hearts span:nth-child(7) { animation-delay: 1.2s; }
+
+        .final-signature {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2.8rem;
+            }
+
+            .love-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-content {
+                margin-right: 70px;
+                padding: 35px;
+            }
+
+            .final-section h2 {
+                font-size: 3rem;
+            }
+        }
+        #flappyCanvas {
+  display: block;
+  margin: 0 auto;
+  touch-action: manipulation;
+}
+body.modal-open {
+  overflow: hidden;
+}
+
+.modal {
+  backdrop-filter: blur(10px);
+}
+
+
+        /* Loading spinner */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .timeline-item {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.timeline-image {
+  width: 220px;
+  flex-shrink: 0;
+}
+
+.timeline-image img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+  transition: transform 0.4s ease;
+}
+
+.timeline-item:hover .timeline-image img {
+  transform: scale(1.05);
+}
+.love-card-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  object-position: center; 
+  border-radius: 18px;
+  margin-bottom: 18px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+  display: block;
+}
+@media (max-width: 768px) {
+  .love-card {
+    min-height: 360px;
+  }
+
+  .love-card-img {
+    height: 160px;
+  }
+}
+#gameEndVideo {
+  object-fit: cover;
+}
+
+
+
+    </style>
+</head>
+<body>
+    <!-- Floating hearts background -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <img src="hero-bg.jpg" class="hero-bg">
+
+        <div class="hero-content">
+            <div class="hero-heart">❤️</div>
+            <h1>To My Ranju<br>Girl of my life</h1>
+            <div class="hero-subtitle">Beautiful 💕</div>
+            <p class="hero-text">Every moment with you is precious I hold close to my heart</p>
+            <button class="hero-button" onclick="scrollToTimeline()">Explore Our Love Story 💖</button>
+        </div>
+        <div class="hero-heart-big" onclick="explodeHearts()"></div>
+        <div class="click-heart-text" onclick="explodeHearts()">
+            Click the heart! 💖<span class="heart-counter" id="heartCounter">(0)</span>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section" id="timeline">
+        <h2 class="section-title">Our Journey Till Now</h2>
+        <p class="section-subtitle">Every moment with you is a chapter in our story</p>
+        
+        <div class="timeline-container">
+            <div class="timeline-line"></div>
+            
+            <div class="timeline-item">
+                <div class="timeline-image">
+    <img src="timeline1.jpg" alt="First Meeting">
+  </div>
+                <div class="timeline-content">
+                    <h3>First Meeting</h3>
+                    <div class="date">September 13th 2025</div>
+                    <p>The day I met you, my life changed forever. Your smile lit up the entire room.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-image">
+    <img src="timeline2.jpg" alt="Being together">
+  </div>
+                <div class="timeline-content">
+                    <h3>Being together</h3>
+                    <div class="date">November 20th 2025</div>
+                    <p>That magical evening where time stood still. I knew you were the one.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-image">
+    <img src="timeline3.jpg" alt="Our Date">
+  </div>
+                <div class="timeline-content">
+                    <h3>Our Date</h3>
+                    <div class="date">December 14th 2025</div>
+                    <p>Every adventure with you becomes my favorite memory.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-image">
+    <img src="timeline4.jpg" alt="For a Life">
+  </div>
+                <div class="timeline-content">
+                    <h3>Today & Forever</h3>
+                    <div class="date">Forever</div>
+                    <p>Here's to all our future memories together. I love you more each day.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Carousel Section -->
+    <section class="carousel-section">
+        <div class="carousel-container">
+            <div class="carousel-track" id="carouselTrack">
+                <div class="carousel-slide">
+                    <img src="memory1.jpg" alt="Memory 1">
+                </div>
+                <div class="carousel-slide">
+                    <img src="memory2.jpg" alt="Memory 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="memory3.jpg" alt="Memory 3">
+                </div>
+                <div class="carousel-slide">
+                    <img src="memory4.jpg" alt="Memory 4">
+                </div>
+            </div>
+            <div class="carousel-dots">
+                <div class="carousel-dot active" onclick="goToSlide(0)"></div>
+                <div class="carousel-dot" onclick="goToSlide(1)"></div>
+                <div class="carousel-dot" onclick="goToSlide(2)"></div>
+                <div class="carousel-dot" onclick="goToSlide(3)"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Letter Section -->
+    <section class="letter-section">
+        <div class="letter-icon">💬</div>
+        <h2>A Letter From My Heart</h2>
+        <button class="letter-button" onclick="openLetter()">Open My Letter 💌</button>
+    </section>
+
+    <!-- Letter Modal -->
+    <div class="modal" id="letterModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeLetter()">&times;</span>
+            <h3>My Dearest Love,</h3>
+            <p>From the moment I met you, my life changed in ways I never imagined possible. You've brought light into my darkest days and made my happiest moments even brighter.</p>
+            <p>Every laugh we share, every adventure we take, every quiet moment together - they all remind me how incredibly lucky I am to have you in my life.</p>
+            <p>You inspire me to be better, to dream bigger, and to love deeper. Your kindness, your strength, your beautiful soul - everything about you amazes me every single day.</p>
+            <p>This Valentine's Day, I want you to know that you are my everything. My best friend, my partner, my love. I can't wait to create more beautiful memories with you.</p>
+            <p>Forever and always yours,<br>With all my love ❤️</p>
+        </div>
+    </div>
+
+    <!-- Why I Love You Section -->
+    <section class="love-section">
+        <div class="love-icon">✨</div>
+        <h2>Why I Love You</h2>
+        <p class="love-subtitle">Click each card to see why you're so special to me</p>
+        <div class="love-grid">
+            <div class="love-card" onclick="flipCard(this)">
+                <div class="love-card-front">
+                    <div class="love-card-icon">😊</div>
+                    <h3>Your hair</h3>
+                    <p class="tap-text">Tap to reveal ❤️</p>
+                </div>
+                <div class="love-card-back">
+                    <img src="love1.jpg" alt="Your smile" class="love-card-img">
+                    <div class="love-card-icon">😊</div>
+                    <h3>yOuR CuRly HaIr😩😩😩😩😩😩😩</h3>
+                    <p>You are perfect</p>
+                </div>
+            </div>
+
+            <div class="love-card" onclick="flipCard(this)">
+                <div class="love-card-front">
+                    <div class="love-card-icon">💝</div>
+                    <h3>You forgive me all the time</h3>
+                    <p class="tap-text">Tap to reveal ❤️</p>
+                </div>
+                <div class="love-card-back">
+                    <img src="love2.jpg" alt="Your smile" class="love-card-img">
+                    <div class="love-card-icon">💝</div>
+                    <h3>Sorry for all the time I upsetted You</h3>
+                    <p>The way you care for others inspires me every day 💕</p>
+                </div>
+            </div>
+
+            <div class="love-card" onclick="flipCard(this)">
+                <div class="love-card-front">
+                    <div class="love-card-icon">😄</div>
+                    <h3>Your Sense of Humor</h3>
+                    <p class="tap-text">Tap to reveal ❤️</p>
+                </div>
+                <div class="love-card-back">
+                    <img src="love3.jpg" alt="Your smile" class="love-card-img">
+                    <div class="love-card-icon">😄</div>
+                    <h3>Your Sense of Humor</h3>
+                    <p>Sometimes You unexpectedlly make me Laugh😭😭😭😭😭😭😭</p>
+                </div>
+            </div>
+
+            <div class="love-card" onclick="flipCard(this)">
+                <div class="love-card-front">
+                    <div class="love-card-icon">🧠😛</div>
+                    <h3>Dumbahhh</h3>
+                    <p class="tap-text">Tap to reveal ❤️</p>
+                </div>
+                <div class="love-card-back">
+                    <img src="love4.jpg" alt="Your smile" class="love-card-img">
+                    <div class="love-card-icon">🧠😛</div>
+                    <h3>Dumb ahh</h3>
+                    <p>I like your dumbahhh😛</p>
+                </div>
+            </div>
+
+            <div class="love-card" onclick="flipCard(this)">
+                <div class="love-card-front">
+                    <div class="love-card-icon">😋</div>
+
+                    <h3>Your Smile</h3>
+                    <p class="tap-text">Tap to reveal ❤️</p>
+                </div>
+                <div class="love-card-back">
+                    <img src="love5.jpg" alt="Your smile" class="love-card-img">
+                    <div class="love-card-icon">😋</div>
+                    <h3>Your Smile</h3>
+                    <p>I mean your Lips😋😋😋😋😋😋</p>
+                </div>
+            </div>
+
+            <div class="love-card" onclick="flipCard(this)">
+                <div class="love-card-front">
+                    <div class="love-card-icon">❤️</div>
+                    <h3>Your Love</h3>
+                    <p class="tap-text">Tap to reveal ❤️</p>
+                </div>
+                <div class="love-card-back">
+                    <img src="love6.jpg" alt="Your smile" class="love-card-img">
+                    <div class="love-card-icon">❤️</div>
+                    <h3>Your Love</h3>
+                    <p>The way you love me makes me feel like the luckiest person alive 💕 and also your nose i wanna bite it off</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Add to Cart Section -->
+<section class="love-section" id="cartSection">
+    <div class="love-icon">🛒</div>
+    <h2>Choose Me 💕</h2>
+    <p class="love-subtitle">Add me to your heart’s cart forever</p>
+
+    <div style="display:flex;justify-content:center;">
+        <div class="love-card" id="cartCard">
+            <div class="love-card-front">
+                <img id="cartImage"
+                     src="my-pic.jpg"
+                     alt="Me"
+                     style="width:100%;border-radius:20px;margin-bottom:20px;">
+                <h3>Your Forever Item 💘</h3>
+                <p class="tap-text">Limited edition • One of one</p>
+            </div>
+
+            <div class="love-card-back">
+                <h3>Added to Cart 🛍️</h3>
+                <p>You’ve officially chosen me 💕</p>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top:40px;text-align:center;">
+        <button class="hero-button" onclick="addToCart()">Add to Cart ❤️</button>
+    </div>
+</section>
+
+
+    <!-- Final Section -->
+    <section class="final-section">
+        <div class="final-heart">🤍</div>
+        <h2>Happy Valentine's Day</h2>
+        <div class="final-subtitle">Beautiful</div>
+        <p class="final-text">Thank you for being the most incredible person in my life. You make every day brighter, every moment sweeter, and every dream possible.</p>
+        <div class="final-hearts">
+            <span>🤍</span>
+            <span>🤍</span>
+            <span>🤍</span>
+            <span>🤍</span>
+            <span>🤍</span>
+            <span>🤍</span>
+            <span>🤍</span>
+        </div>
+        <p class="final-signature">Made with endless love, just for you 💕💖</p>
+    </section>
+    <button class="hero-button" onclick="scrollToCart()">Choose Me 💕</button>
+    <button class="hero-button" onclick="openGame()">
+  Play Flappy Love 🎮
+</button>
+<button class="hero-button" onclick="toggleMusic()">
+  Music 🎵
+</button>
+
+
+    <!-- Cart Modal -->
+<div class="modal" id="cartModal">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeCartModal()">&times;</span>
+        <h3>Added to Cart 💖</h3>
+        <span id="cartBadge"
+  style="margin-left:10px;background:#ff4e88;color:white;
+  padding:4px 10px;border-radius:20px;font-size:0.9rem;">
+  0
+</span>
+
+        <p>You’ve officially chosen me.</p>
+        <p><strong>1 item • Forever</strong></p>
+
+        <div style="margin-top:30px;text-align:center;">
+            <button class="hero-button" onclick="goToCart()">
+  Go To Cart
+</button>
+
+
+            <button class="hero-button" onclick="addToCart()">Add to Cart ❤️</button>
+
+        </div>
+    </div>
+</div>
+<!-- Flappy Love Game Modal -->
+<div class="modal" id="gameModal">
+  <div class="modal-content" style="padding:20px;">
+    <span class="modal-close" onclick="closeGame()">&times;</span>
+    <h3 style="text-align:center;margin-bottom:10px;">Flap to My Heart 💖</h3>
+
+    <canvas id="flappyCanvas" width="360" height="480"
+      style="display:block;margin:auto;background:#cce6ff;border-radius:15px;">
+    </canvas>
+    <video id="gameEndVideo"
+       src="game-end.mp4"
+       muted
+       playsinline
+       style="
+         display:none;
+         width:100%;
+         border-radius:15px;
+         margin-top:10px;
+       ">
+</video>
+
+    <div id="gameControls"
+     style="display:none;justify-content:center;gap:15px;margin-top:15px;">
+     
+  <button class="hero-button" onclick="restartGame()">Restart 🔁</button>
+  <button class="hero-button" onclick="closeGame()">Close ❌</button>
+</div>
+
+
+    <p style="text-align:center;margin-top:10px;font-size:0.9rem;">
+      Tap / Click to flap 🐦
+    </p>
+  </div>
+</div>
+
+
+
+     
+
+    <script src="app.js"></script>
+</body>
+</html>

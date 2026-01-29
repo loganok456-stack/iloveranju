@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Cart 💖</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<section class="final-section">
+    <div class="final-heart">🛍️</div>
+    <h2>Your Cart</h2>
+    <div class="final-subtitle" id="cartCount">Loading…</div>
+
+    <div style="margin-top:50px;">
+        <img src="my-pic.jpg" style="width:260px;border-radius:25px;box-shadow:0 20px 40px rgba(0,0,0,.4)">
+        <img src="qr.jpg" style="width:260px;border-radius:25px;box-shadow:0 20px 40px rgba(0,0,0,.4)">
+        <p class="final-text" style="margin-top:25px;">
+            Subscribe for this item and this is non-returnable, non-refundable, and eternal ❤️
+        </p>
+    </div>
+
+    <p class="final-signature">Already yours 💕</p>
+</section>
+<script>
+fetch('/api/cart')
+  .then(res => res.json())
+  .then(data => {
+    if (!data.items || data.items.length === 0) {
+      document.getElementById('cartCount').innerText = '0 items';
+      return;
+    }
+
+    document.getElementById('cartCount').innerText =
+      data.items.length + ' item • Forever';
+  })
+  .catch(() => {
+    document.getElementById('cartCount').innerText = 'Error loading cart';
+  });
+</script>
+
+
+
+</body>
+</html>

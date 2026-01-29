@@ -1,0 +1,108 @@
+/* ============ GLOBAL RESET ============ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(135deg, #e91e63, #ff1654);
+  color: white;
+  min-height: 100vh;
+}
+
+/* ============ FINAL SECTION (CART PAGE) ============ */
+.final-section {
+  min-height: 100vh;
+  padding: 120px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.final-heart {
+  font-size: 100px;
+  margin-bottom: 25px;
+  animation: pulse 2.5s ease-in-out infinite;
+}
+
+.final-section h2 {
+  font-size: 3.8rem;
+  margin-bottom: 15px;
+}
+
+.final-subtitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  opacity: 0.95;
+}
+
+/* ============ CART IMAGES ============ */
+.cart-images {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cart-images img {
+  width: 260px;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 25px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.cart-images img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+}
+
+/* ============ TEXT ============ */
+.final-text {
+  font-size: 1.3rem;
+  max-width: 700px;
+  margin: 30px auto;
+  line-height: 1.7;
+}
+
+.final-signature {
+  margin-top: 40px;
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+/* ============ ANIMATIONS ============ */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.12);
+  }
+}
+
+/* ============ MOBILE RESPONSIVE ============ */
+@media (max-width: 768px) {
+  .final-section h2 {
+    font-size: 2.6rem;
+  }
+
+  .final-subtitle {
+    font-size: 1.4rem;
+  }
+
+  .cart-images img {
+    width: 220px;
+    height: 220px;
+  }
+
+  .final-heart {
+    font-size: 80px;
+  }
+}
