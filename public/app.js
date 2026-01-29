@@ -1,5 +1,5 @@
 // ============ API CONFIGURATION ============
-const API_URL = 'http://localhost:3000/api';
+const API_URL = '/api';
 
 // ============ ULTRA SMOOTH FLOATING HEARTS ============
 function createFloatingHeart() {
